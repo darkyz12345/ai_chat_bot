@@ -1,0 +1,4 @@
+.idea/
+.gitognore
+venv/
+.env
