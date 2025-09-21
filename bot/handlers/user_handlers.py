@@ -111,7 +111,8 @@ async def chat_with_ai(msg: Message, session: AsyncSession):
     courses = result.scalars().all()
 
     if courses:
-        recommended = random.choice(courses)
-        ai_answer += f"\n\n👉 Советую обратить внимание на курс:\n<b>{recommended.title}</b>\n{recommended.link}"
+        if random.random() <= 0.1:
+            recommended = random.choice(courses)
+            ai_answer += f"\n\n👉 Советую обратить внимание на курс:\n<b>{recommended.title}</b>\n{recommended.link}"
 
     await msg.answer(ai_answer, parse_mode="HTML")
